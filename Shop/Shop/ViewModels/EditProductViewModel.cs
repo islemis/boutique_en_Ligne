@@ -1,8 +1,11 @@
 ﻿using Shop.Models;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Shop.ViewModels
@@ -38,11 +41,13 @@ namespace Shop.ViewModels
 
         public EditProductViewModel(Produit product)
         {
-            Product = product;
+            Product = product??new Produit();
             LoadCategories();
 
             // Initialize your commands
             UpdateCommand = new Command(OnUpdateCommand);
+
+
         }
 
         private void LoadCategories()
@@ -50,19 +55,43 @@ namespace Shop.ViewModels
             // Load categories from the database
             Categories = new ObservableCollection<Categorie>(App.mydataBase.ObtenirCategories());
 
-            // Set the selected category
-            SelectedCategory = Categories.FirstOrDefault(c => c.Id == Product.IdCategorie);
+            // Set the selected category of the product
+            if (Product.IdCategorie != 0)
+            {
+                SelectedCategory = Categories.FirstOrDefault(c => c.Id == Product.IdCategorie);
+            }
+        }
+
+
+
+        private async Task<byte[]> ConvertStreamToByteArray(Stream stream)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                await stream.CopyToAsync(ms);
+                return ms.ToArray();
+            }
         }
 
         private void OnUpdateCommand()
         {
             try
             {
-                // Update product details
-                Product.IdCategorie = SelectedCategory.Id;
+                if(Product.Id==0)
+                {
+                    Product.IdCategorie = SelectedCategory.Id;
+                    App.mydataBase.AjouterProduit(Product);
 
-                // Save changes to the database
-                App.mydataBase.ModifierProduit(Product);
+                }
+                else
+                {
+                    Product.IdCategorie = SelectedCategory.Id;
+
+                    // Save changes to the database
+                    App.mydataBase.ModifierProduit(Product);
+
+                }
+                
 
                 // Navigate back to the previous page
                 Application.Current.MainPage.Navigation.PopAsync();
@@ -73,6 +102,7 @@ namespace Shop.ViewModels
                 Console.WriteLine($"Exception: {ex.Message}");
             }
         }
-    }
+       
 
+    }
 }

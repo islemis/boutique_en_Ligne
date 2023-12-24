@@ -32,7 +32,7 @@ namespace Shop.ViewModels
         {
             DeleteProductCommand = new Command<Produit>(OnDeleteProduct);
             AddProductCommand = new Command(OnAddProduct);
-            EditProductCommand = new Command(OnEditProduct);
+            EditProductCommand = new Command<Produit>(OnEditProduct);
         }
 
         private void LoadProducts()
@@ -78,9 +78,9 @@ namespace Shop.ViewModels
             await Application.Current.MainPage.Navigation.PushAsync(new EditProduct(null));
         }
 
-        private async void OnEditProduct()
+        private async void OnEditProduct(Produit selectedProduct)
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new EditProduct(SelectedItem));
+            await Application.Current.MainPage.Navigation.PushAsync(new EditProduct(selectedProduct));
         }
     }
 }

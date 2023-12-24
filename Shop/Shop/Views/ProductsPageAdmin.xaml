@@ -8,6 +8,10 @@
         <vm:AdminProductsPageViewModel />
     </ContentPage.BindingContext>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddProductCommand}" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout>
             <CollectionView ItemsSource="{Binding Products}">
@@ -20,22 +24,20 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Label Text="{Binding Nom}" FontSize="18" FontAttributes="Bold" />
+                                <StackLayout>
+                                    <Label Text="{Binding Id}" FontSize="14" FontAttributes="Bold" TextColor="#3498db" />
+                                    <Label Text="{Binding Nom}" FontSize="18" FontAttributes="Bold" />
+                                </StackLayout>
 
-                                <StackLayout Grid.Row="1" Orientation="Horizontal" Spacing="10">
-                                    <Button Text="Delete" Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.DeleteProductCommand}" 
-                                            CommandParameter="{Binding .}" BackgroundColor="#e74c3c" TextColor="White" />
-
-                                    <Button Text="Update" Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.EditProductCommand}" 
-                                            CommandParameter="{Binding .}" BackgroundColor="#3498db" TextColor="White" />
+                                <StackLayout Grid.Row="1" Orientation="Horizontal" Spacing="5">
+                                    <Button Text="Update" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdminProductsPageViewModel}}, Path=EditProductCommand}" CommandParameter="{Binding .}" FontSize="12" BackgroundColor="#3498db" TextColor="White" />
+                                    <Button Text="Delete" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdminProductsPageViewModel}}, Path=DeleteProductCommand}" CommandParameter="{Binding .}" FontSize="12" BackgroundColor="#e74c3c" TextColor="White" />
                                 </StackLayout>
                             </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-            <Button Text="Add Product" Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.AddProductCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -46,5 +46,6 @@ namespace Shop.ViewModels
             Console.WriteLine("Category saved successfully!");
             Application.Current.MainPage.Navigation.PopAsync(); // Naviguer en arrière
         }
+
     }
 }

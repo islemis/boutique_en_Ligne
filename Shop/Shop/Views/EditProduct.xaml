@@ -24,10 +24,10 @@
             <Image x:Name="productImage" Source="{Binding Product.UrlImage}" />
 
             <!-- Button to select image -->
-            <Button Text="Select Image"  Command="{Binding OnSelectImageClicked}"/>
+            <Button Text="Select Image" Clicked="OnSelectImageClicked" />
 
             <!-- Button to update product -->
-            <Button Text="Update" Command="{Binding UpdateCommand}" />
+            <Button Text="Save" Command="{Binding UpdateCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
