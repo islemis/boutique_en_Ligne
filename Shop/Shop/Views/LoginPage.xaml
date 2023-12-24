@@ -1,0 +1,12 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shop.Views.LoginPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Placeholder="Nom d'utilisateur" Text="{Binding Username}" />
+            <Entry Placeholder="Mot de passe" Text="{Binding Password}" IsPassword="True" />
+            <Button Text="Se Connecter" Command="{Binding LoginCommand}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

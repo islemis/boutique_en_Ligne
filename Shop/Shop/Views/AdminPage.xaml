@@ -1,0 +1,16 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Shop.Views.AdminPage"
+             xmlns:vm="clr-namespace:Shop.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:AdminPageViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Button Text="Products" Command="{Binding NavigateToProductsCommand}" />
+        <Button Text="Categories" Command="{Binding NavigateToCategoriesCommand}" />
+        <Button Text="Commands" Command="{Binding NavigateToCommandsCommand}" />
+    </StackLayout>
+
+</ContentPage>
