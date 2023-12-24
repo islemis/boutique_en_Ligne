@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Shop.ViewModels"
+             x:Class="Shop.Views.ProductsPageAdmin">
+
+    <ContentPage.BindingContext>
+        <vm:AdminProductsPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding Products}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="5" Padding="10" CornerRadius="5" BackgroundColor="#f2f2f2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Text="{Binding Nom}" FontSize="18" FontAttributes="Bold" />
+
+                                <StackLayout Grid.Row="1" Orientation="Horizontal" Spacing="10">
+                                    <Button Text="Delete" Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.DeleteProductCommand}" 
+                                            CommandParameter="{Binding .}" BackgroundColor="#e74c3c" TextColor="White" />
+
+                                    <Button Text="Update" Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.EditProductCommand}" 
+                                            CommandParameter="{Binding .}" BackgroundColor="#3498db" TextColor="White" />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Add Product" Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.AddProductCommand}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -14,15 +14,15 @@ namespace Shop.ViewModels
 
         public AdminPageViewModel()
         {
-            //NavigateToProductsCommand = new Command(OnNavigateToProducts);
+            NavigateToProductsCommand = new Command(OnNavigateToProducts);
             NavigateToCategoriesCommand = new Command(OnNavigateToCategories);
             // NavigateToCommandsCommand = new Command(OnNavigateToCommands);
         }
 
-        /*private async void OnNavigateToProducts()
+        private async void OnNavigateToProducts()
           {
-           // await Shell.Current.Navigation.PushAsync(new AdminProductsPage());
-          } */
+            await Shell.Current.Navigation.PushAsync(new ProductsPageAdmin());
+          } 
 
         private async void OnNavigateToCategories()
         {

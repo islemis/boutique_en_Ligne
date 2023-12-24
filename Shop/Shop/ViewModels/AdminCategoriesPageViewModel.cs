@@ -7,7 +7,7 @@ using Shop.Views;
 using Xamarin.Forms;
 namespace Shop.ViewModels
 {
-  
+
 
     public class AdminCategoriesPageViewModel : BaseViewModel
     {
@@ -33,18 +33,14 @@ namespace Shop.ViewModels
         {
             DeleteCategoryCommand = new Command<Categorie>(OnDeleteCategory);
             AddCategoryCommand = new Command(OnAddCategory);
-            EditCategoryCommand = new Command(OnEditCategory);
+            EditCategoryCommand = new Command<Categorie>(OnEditCategory);
         }
 
         private void LoadCategories()
         {
             List<Categorie> categories = App.mydataBase.ObtenirCategories();
 
-            // Verify that 'Nom' property is correctly set in each Categorie object
-            foreach (var categorie in categories)
-            {
-                Console.WriteLine($"Category Name: {categorie.Nom}");
-            }
+          
 
             Categories = new ObservableCollection<Categorie>(categories);
         }
@@ -53,6 +49,7 @@ namespace Shop.ViewModels
         {
             LoadCategories();
         }
+       
 
         private async void OnDeleteCategory(Categorie selectedCategory)
         {
@@ -65,13 +62,9 @@ namespace Shop.ViewModels
                     App.mydataBase.SupprimerCategorie(selectedCategory.Id);
                     LoadCategories();
 
-                    await Application.Current.MainPage.DisplayAlert("Catégorie supprimée", "La catégorie a été supprimée avec succès.", "OK");
                 }
             }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Sélectionnez une catégorie", "Veuillez sélectionner une catégorie avant de supprimer.", "OK");
-            }
+           
         }
 
 
@@ -80,12 +73,12 @@ namespace Shop.ViewModels
 
             await Application.Current.MainPage.Navigation.PushAsync(new EditCategory(null));
         }
-        private async void OnEditCategory()
+        private async void OnEditCategory(Categorie selectedCategory)
         {
 
-            await Application.Current.MainPage.Navigation.PushAsync(new EditCategory(SelectedItem));
+            await Application.Current.MainPage.Navigation.PushAsync(new EditCategory(selectedCategory));
         }
-        
+
 
     }
 
