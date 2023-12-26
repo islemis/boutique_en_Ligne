@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using Shop;
 using Shop.Models;
 using Shop.Views;
@@ -28,15 +29,17 @@ namespace Shop.ViewModels
         public Command<Categorie> DeleteCategoryCommand { get; }
         public Command AddCategoryCommand { get; }
         public Command EditCategoryCommand { get; }
-
+        public Command ShowProductsCommand { get; }
         public AdminCategoriesPageViewModel()
         {
             DeleteCategoryCommand = new Command<Categorie>(OnDeleteCategory);
             AddCategoryCommand = new Command(OnAddCategory);
             EditCategoryCommand = new Command<Categorie>(OnEditCategory);
-        }
+            ShowProductsCommand = new Command<Categorie>(OnShowProducts);
 
-        private void LoadCategories()
+        }
+      
+            private void LoadCategories()
         {
             List<Categorie> categories = App.mydataBase.ObtenirCategories();
 
@@ -66,7 +69,16 @@ namespace Shop.ViewModels
             }
            
         }
+        private async void OnShowProducts(Categorie selectedCategory)
+        {
+            Console.WriteLine(selectedCategory.Nom);
 
+            if (selectedCategory != null)
+            {
+                // Navigate to the Products page and pass the selected category
+                await Application.Current.MainPage.Navigation.PushAsync(new Products(selectedCategory));
+            }
+        }
 
         private async void OnAddCategory()
         {

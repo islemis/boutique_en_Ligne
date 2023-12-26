@@ -9,8 +9,20 @@ namespace Shop
 {
     public partial class App : Application
     {
-        private static BoutiqueDataBase db;
+        public static BoutiqueDataBase db;
+        public static Panier shoppingCart; // Add this line
 
+        public static Panier ShoppingCart // Add this property
+        {
+            get
+            {
+                if (shoppingCart == null)
+                {
+                    shoppingCart = new Panier();
+                }
+                return shoppingCart;
+            }
+        }
         public static BoutiqueDataBase mydataBase
         {
             get

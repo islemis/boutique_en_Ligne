@@ -31,9 +31,9 @@ namespace Shop.Services
             return _baseDeDonnees.Table<Categorie>().ToList();
         }
         // Opérations sur les produits par catégorie
-        public List<Produit> ObtenirProduitsParCategorie(int idCategorie)
+        public List<Produit> ObtenirProduitsParCategorie(Categorie c)
         {
-            var produits = _baseDeDonnees.Table<Produit>().Where(p => p.Id == idCategorie).ToList();
+            var produits = _baseDeDonnees.Table<Produit>().Where(p => p.IdCategorie == c.Id).ToList();
             return produits;
         }
 

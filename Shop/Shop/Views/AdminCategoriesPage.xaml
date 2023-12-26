@@ -11,7 +11,10 @@
         <ToolbarItem Text="Add" Command="{Binding AddCategoryCommand}" />
     </ContentPage.ToolbarItems>
 
-    <RefreshView x:DataType="local:AdminCategoriesPageViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <RefreshView.BindingContext>
+            <local:AdminCategoriesPageViewModel />
+        </RefreshView.BindingContext>
         <CollectionView x:Name="CategoriesListView"
                 ItemsSource="{Binding Categories}"
                 SelectionMode="None">
@@ -31,9 +34,6 @@
                                 CommandParameter="{Binding .}" />
                         </StackLayout.GestureRecognizers>
 
-                        <Button Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdminCategoriesPageViewModel}}, Path=EditCategoryCommand}" CommandParameter="{Binding .}" />
-
-                        <Button Text="Delete" Command="{Binding Source={RelativeSource AncestorType={x:Type local:AdminCategoriesPageViewModel}}, Path=DeleteCategoryCommand}" CommandParameter="{Binding .}" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

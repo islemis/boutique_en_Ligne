@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:Shop.ViewModels"
+             x:Class="Shop.Views.PanierPage">
+
+    <ContentPage.BindingContext>
+        <viewmodels:PanierViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Liste des articles dans le panier -->
+            <!-- Updated ListView ItemTemplate -->
+            <ListView x:Name="panierListView" ItemsSource="{Binding Articles}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="{Binding NomProduit}" VerticalOptions="Center"/>
+                                <Label Text="{Binding PrixUnitaire, StringFormat='Price: {0:C}'}" VerticalOptions="Center"/>
+                                <Label Text="{Binding Quantite}" VerticalOptions="Center"/>
+                                <!-- Buttons for adjusting quantity -->
+                                <!-- Buttons for adjusting quantity -->
+                                <Button Text="+" Command="{Binding Path=BindingContext.IncrementQuantityCommand, Source={x:Reference panierListView}}"
+        CommandParameter="{Binding IdProduit}" />
+                                <Button Text="-" Command="{Binding Path=BindingContext.DecrementQuantityCommand, Source={x:Reference panierListView}}"
+        CommandParameter="{Binding IdProduit}" />
+                                <!-- Button for removing an item -->
+                                <Button Text="Remove" Command="{Binding Path=BindingContext.RetirerArticleCommand, Source={x:Reference panierListView}}"
+        CommandParameter="{Binding IdProduit}" />
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Total du panier -->
+            <Label Text="{Binding CalculerTotalCommand}" VerticalOptions="Center"/>
+
+            <!-- Boutons d'action -->
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Vider le panier" Command="{Binding ViderPanierCommand}" />
+                <Button Text="Passer la commande" Command="{Binding PasserCommandeCommand}" />
+            </StackLayout>
+
+            <!-- Total du panier -->
+
+            <!-- Boutons d'action -->
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Vider le panier" Command="{Binding ViderPanierCommand}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
