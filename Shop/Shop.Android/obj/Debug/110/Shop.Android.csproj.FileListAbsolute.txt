@@ -278,9 +278,9 @@ C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Xa
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Xamarin.Google.Android.Material.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Xamarin.Google.Android.Material.pdb
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Xamarin.Google.Guava.ListenableFuture.dll
-C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\jl\f6afeee4-c67d-4b49-b15d-094c2b2838b7.jar
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\jl\db54999d-fcfc-40a1-abca-5960052d773f.jar
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_AndroidXJetifyJavaLibraryRules.stamp
-C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\proguard\3054203f-c427-43fa-bf45-13493c15b84b.cfg
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\proguard\885bbf56-8f72-46ed-b004-813f1740a886.cfg
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_AndroidXJetifyProguardRules.stamp
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\_AndroidXJetifyProguardRules.jetify
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_AndroidXCecilfy.stamp

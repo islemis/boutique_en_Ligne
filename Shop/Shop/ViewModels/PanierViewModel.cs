@@ -4,6 +4,7 @@ using Shop.Services;
 using Shop.Models;
 using System.Collections.ObjectModel;
 using System;
+using System.Collections.Generic;
 
 namespace Shop.ViewModels
 {
@@ -40,16 +41,15 @@ namespace Shop.ViewModels
 
         public PanierViewModel()
         {
-            _articlesPanier = new ObservableCollection<ArticlePanier>(Panier.Articles);
-            Console.WriteLine(Articles[0]);
+            _articlesPanier = new ObservableCollection<ArticlePanier>(Panier?.Articles ?? new List<ArticlePanier>());
             RetirerArticleCommand = new Command<int>(RetirerArticle);
             PasserCommandeCommand = new Command(PasserCommande);
             ViderPanierCommand = new Command(ViderPanier);
             IncrementQuantityCommand = new Command<int>(IncrementQuantity);
             DecrementQuantityCommand = new Command<int>(DecrementQuantity);
             CalculerTotalCommand = new Command(CalculerTotal);
-
         }
+
 
         private void RetirerArticle(int idProduit)
         {
