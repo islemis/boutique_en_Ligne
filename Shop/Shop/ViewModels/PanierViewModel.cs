@@ -5,6 +5,7 @@ using Shop.Models;
 using System.Collections.ObjectModel;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Shop.ViewModels
 {
@@ -20,19 +21,30 @@ namespace Shop.ViewModels
         }
         public ObservableCollection<ArticlePanier> Articles
         {
-            get { return _articlesPanier; }
+            get { return _articlesPanier; 
+            }
             set
             {
                 _articlesPanier = value;
                 OnPropertyChanged(nameof(Articles));
+                // Whenever the Articles collection changes, recalculate the total
+                CalculerTotal();
             }
         }
+
         private Panier _panier;
 
         public Panier Panier
         {
             get { return _panier; }
             set { SetProperty(ref _panier, value); }
+        }
+        public decimal _total;
+
+        public decimal Total
+        {
+            get { return _total; }
+            set { SetProperty(ref _total, value); }
         }
 
         public ICommand RetirerArticleCommand { get; }
@@ -41,8 +53,13 @@ namespace Shop.ViewModels
 
         public PanierViewModel()
         {
+
             _panier = App.shoppingCart;  // Ensure that App.shoppingCart is initialized
+            Console.WriteLine($"PanierViewModel created. Panier count: {_panier.Articles.Count}");
+
             _articlesPanier = new ObservableCollection<ArticlePanier>(_panier?.Articles ?? new List<ArticlePanier>());
+            CalculerTotal();
+
             RetirerArticleCommand = new Command<int>(RetirerArticle);
             PasserCommandeCommand = new Command(PasserCommande);
             ViderPanierCommand = new Command(ViderPanier);
@@ -90,9 +107,13 @@ namespace Shop.ViewModels
 
         private void CalculerTotal()
         {
-            var total = Panier.CalculerTotal();
-            Console.WriteLine($"Total du panier: {total:C}");
+            Total = _panier.CalculerTotal(Articles.ToList());
+            Console.WriteLine($"Total du panier: {Total:C}");
+            Console.WriteLine($"CalculerTotal called. Articles count: {Articles.Count}");
+
+            OnPropertyChanged(nameof(Total));
         }
+
         // Actualise la liste d'articles après chaque modification
         private void RefreshPanier()
         {

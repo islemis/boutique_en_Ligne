@@ -20,12 +20,12 @@
                                 <Label Text="{Binding Quantite}" VerticalOptions="Center"/>
                         
                                 <Button Text="+" Command="{Binding Path=BindingContext.IncrementQuantityCommand, Source={x:Reference panierListView}}"
-        CommandParameter="{Binding IdProduit}" />
+        CommandParameter="{Binding IdProduit}"   />
                                 <Button Text="-" Command="{Binding Path=BindingContext.DecrementQuantityCommand, Source={x:Reference panierListView}}"
-        CommandParameter="{Binding IdProduit}" />
+        CommandParameter="{Binding IdProduit}"   />
                                 <!-- Button for removing an item -->
                                 <Button Text="Remove" Command="{Binding Path=BindingContext.RetirerArticleCommand, Source={x:Reference panierListView}}"
-        CommandParameter="{Binding IdProduit}" />
+        CommandParameter="{Binding IdProduit}"   />
 
                             </StackLayout>
                         </ViewCell>
@@ -34,7 +34,8 @@
             </ListView>
 
             <!-- Total du panier -->
-            <Label Text="{Binding CalculerTotalCommand}" VerticalOptions="Center"/>
+            <!-- Total du panier -->
+            <Label Text="{Binding Total, StringFormat='Total: {0:C}'}" VerticalOptions="Center"/>
 
             <!-- Boutons d'action -->
             <StackLayout Orientation="Horizontal">

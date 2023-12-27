@@ -49,11 +49,12 @@ namespace Shop.Services
             }
         }
 
-        public decimal CalculerTotal()
+        public decimal CalculerTotal(List<ArticlePanier> articles)
         {
             // Calculer le total du panier
-            return Articles.Sum(article => article.PrixUnitaire * article.Quantite);
+            return articles.Sum(article => article.PrixUnitaire * article.Quantite);
         }
+
 
         public void ViderPanier()
         {

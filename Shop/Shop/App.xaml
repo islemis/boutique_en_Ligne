@@ -25,6 +25,7 @@
                             </VisualState>
                         </VisualStateGroup>
                     </VisualStateGroupList>
+
                 </Setter>
             </Style>
         </ResourceDictionary>        
