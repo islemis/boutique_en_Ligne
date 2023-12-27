@@ -25,3 +25,4 @@ C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\ref\Shop.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.pdb
+C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.csproj.AssemblyReference.cache

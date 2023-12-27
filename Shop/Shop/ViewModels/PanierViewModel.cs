@@ -41,7 +41,8 @@ namespace Shop.ViewModels
 
         public PanierViewModel()
         {
-            _articlesPanier = new ObservableCollection<ArticlePanier>(Panier?.Articles ?? new List<ArticlePanier>());
+            _panier = App.shoppingCart;  // Ensure that App.shoppingCart is initialized
+            _articlesPanier = new ObservableCollection<ArticlePanier>(_panier?.Articles ?? new List<ArticlePanier>());
             RetirerArticleCommand = new Command<int>(RetirerArticle);
             PasserCommandeCommand = new Command(PasserCommande);
             ViderPanierCommand = new Command(ViderPanier);
@@ -95,14 +96,9 @@ namespace Shop.ViewModels
         // Actualise la liste d'articles après chaque modification
         private void RefreshPanier()
         {
-            Articles.Clear();
-            foreach (var article in Panier.Articles)
-            {
-                Articles.Add(article);
-            }
-
-            // Actualisez d'autres propriétés liées à l'interface utilisateur si nécessaire
+            Articles = new ObservableCollection<ArticlePanier>(_panier.Articles);
             OnPropertyChanged(nameof(Articles));
         }
+
     }
 }
