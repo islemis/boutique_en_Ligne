@@ -13,7 +13,6 @@ namespace Shop.ViewModels
     {
         private ObservableCollection<ArticlePanier> _articlesPanier;
         private ArticlePanier  _selectedItem;
-
         public ArticlePanier SelectedItem
         {
             get { return _selectedItem; }
@@ -69,16 +68,48 @@ namespace Shop.ViewModels
         }
 
 
+      
+        // Commandes liées aux méthodes du Panier
+        public ICommand IncrementQuantityCommand { get; }
+        public ICommand DecrementQuantityCommand { get; }
+        public ICommand CalculerTotalCommand { get; }
         private void RetirerArticle(int idProduit)
         {
             App.shoppingCart.RetirerArticle(idProduit);
             RefreshPanier();
         }
 
-        private void PasserCommande()
+
+
+
+
+        private async void PasserCommande()
         {
-            ViderPanier();
+            // Prompt the user for their name
+            string customerName = await Application.Current.MainPage.DisplayPromptAsync("Confirmation", "Please write your name:");
+
+            if (!string.IsNullOrEmpty(customerName))
+            {
+                // User entered a name, proceed with adding the command
+                Console.WriteLine($"Commande confirmed by {customerName}");
+                AjouterCommande(customerName);
+                ViderPanier();  // This line should clear the panier
+            }
+            else
+            {
+                // User canceled or entered an empty name
+                Console.WriteLine("Commande canceled");
+            }
         }
+
+
+
+
+
+
+
+
+
 
         private void ViderPanier()
         {
@@ -86,13 +117,6 @@ namespace Shop.ViewModels
             Articles = new ObservableCollection<ArticlePanier>();
 
         }
-        // Commandes liées aux méthodes du Panier
-        public ICommand IncrementQuantityCommand { get; }
-        public ICommand DecrementQuantityCommand { get; }
-        public ICommand CalculerTotalCommand { get; }
-
-        // Méthodes appelées par les commandes
-        // Méthodes appelées par les commandes
         private void IncrementQuantity(int idProduit)
         {
             Panier.IncrementQuantity(idProduit);
@@ -120,6 +144,64 @@ namespace Shop.ViewModels
             Articles = new ObservableCollection<ArticlePanier>(_panier.Articles);
             OnPropertyChanged(nameof(Articles));
         }
+        private void AjouterCommande(String name)
+        {
+
+            try
+            {
+                // Créer une nouvelle commande à partir des articles dans le panier
+                Commande nouvelleCommande = new Commande();
+
+
+                // Créer une liste pour les lignes de commande
+                List<LigneCommande> lignesCommande = new List<LigneCommande>();
+
+                // Ajouter les lignes de commande associées à la commande
+                foreach (var article in Panier.Articles)
+                {
+                    LigneCommande nouvelleLigneCommande = new LigneCommande
+                    {
+                        IdProduit = article.IdProduit,
+                        Quantite = article.Quantite,
+                        // Ajoutez d'autres propriétés de la ligne de commande si nécessaire
+                    };
+
+                    // Ajouter la ligne de commande à la liste
+                    lignesCommande.Add(nouvelleLigneCommande);
+                }
+
+                // Assigner la liste de lignes de commande à la nouvelle commande
+                nouvelleCommande.LignesCommande = lignesCommande;
+                nouvelleCommande.NomClient = name;
+                // Ajouter la commande à la base de données
+                App.mydataBase.AjouterCommande(nouvelleCommande);
+                Console.WriteLine($"Commande added for {name}");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error adding command: {ex.Message}");
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
+
 }
