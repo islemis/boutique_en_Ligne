@@ -82,35 +82,6 @@ namespace Shop.ViewModels
 
 
 
-
-        private async void PasserCommande()
-        {
-            // Prompt the user for their name
-            string customerName = await Application.Current.MainPage.DisplayPromptAsync("Confirmation", "Please write your name:");
-
-            if (!string.IsNullOrEmpty(customerName))
-            {
-                // User entered a name, proceed with adding the command
-                Console.WriteLine($"Commande confirmed by {customerName}");
-                AjouterCommande(customerName);
-                ViderPanier();  // This line should clear the panier
-            }
-            else
-            {
-                // User canceled or entered an empty name
-                Console.WriteLine("Commande canceled");
-            }
-        }
-
-
-
-
-
-
-
-
-
-
         private void ViderPanier()
         {
             Console.WriteLine("ViderPanier method called."); // Add debugging output
@@ -144,46 +115,99 @@ namespace Shop.ViewModels
             Articles = new ObservableCollection<ArticlePanier>(_panier.Articles);
             OnPropertyChanged(nameof(Articles));
         }
-        private void AjouterCommande(String name)
+
+        private async void PasserCommande()
         {
+            // Prompt the user for their name
+            string customerName = await Application.Current.MainPage.DisplayPromptAsync("Confirmation", "Please write your name:");
 
-            try
+            if (!string.IsNullOrEmpty(customerName))
             {
-                // Créer une nouvelle commande à partir des articles dans le panier
-                Commande nouvelleCommande = new Commande();
-
-
-                // Créer une liste pour les lignes de commande
-                List<LigneCommande> lignesCommande = new List<LigneCommande>();
-
-                // Ajouter les lignes de commande associées à la commande
-                foreach (var article in Panier.Articles)
-                {
-                    LigneCommande nouvelleLigneCommande = new LigneCommande
-                    {
-                        IdProduit = article.IdProduit,
-                        Quantite = article.Quantite,
-                        // Ajoutez d'autres propriétés de la ligne de commande si nécessaire
-                    };
-
-                    // Ajouter la ligne de commande à la liste
-                    lignesCommande.Add(nouvelleLigneCommande);
-                }
-
-                // Assigner la liste de lignes de commande à la nouvelle commande
-                nouvelleCommande.LignesCommande = lignesCommande;
-                nouvelleCommande.NomClient = name;
-                // Ajouter la commande à la base de données
-                App.mydataBase.AjouterCommande(nouvelleCommande);
-                Console.WriteLine($"Commande added for {name}");
-
+                // User entered a name, proceed with adding the command
+                Console.WriteLine($"Commande confirmed by {customerName}");
+                AjouterCommande(customerName);
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine($"Error adding command: {ex.Message}");
+                // User canceled or entered an empty name
+                Console.WriteLine("Commande canceled");
             }
-
         }
+        private void AjouterCommande(String name)
+{
+    
+        if (name != null)
+        {
+            // Créer une nouvelle commande à partir des articles dans le panier
+            Commande nouvelleCommande = new Commande();
+                nouvelleCommande.NomClient = name;
+
+                // Ajouter la commande à la base de données pour obtenir l'Id auto-incrémenté
+                App.mydataBase.AjouterCommande(nouvelleCommande);
+
+            // Créer une liste pour les lignes de commande
+            List<LigneCommande> lignesCommande = new List<LigneCommande>();
+
+            // Obtenez l'Id de la commande fraîchement ajoutée
+            int commandeId = nouvelleCommande.Id;
+
+            // Ajouter les lignes de commande associées à la commande
+            foreach (var article in Panier.Articles)
+            {
+                LigneCommande nouvelleLigneCommande = new LigneCommande
+                {
+                    IdProduit = article.IdProduit,
+                    Quantite = article.Quantite,
+                    IdCommande = commandeId
+                };
+
+                // Ajoutez la ligne de commande à la liste
+                lignesCommande.Add(nouvelleLigneCommande);
+
+                try
+                {
+                    // Sauvegardez la ligneCommande dans la base de données
+                    App.mydataBase.AjouterLigneCommande(nouvelleLigneCommande);
+                    Console.WriteLine(App.mydataBase.ObtenirLesLignesCommande(commandeId));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
+
+            // Assigner la liste de lignes de commande à la nouvelle commande
+            nouvelleCommande.LignesCommande = lignesCommande;
+
+            // Mettez à jour la commande dans la base de données
+            App.mydataBase.modifierCommande(nouvelleCommande);
+
+            Console.WriteLine($"Commande added for {name}");
+            Console.WriteLine($"Loaded ligne {nouvelleCommande.LignesCommande[0].Quantite}");
+                    ViderPanier();  // This line should clear the panier
+
+                }
+                else
+        {
+            Console.WriteLine("Error: Customer name is null.");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+   
+}
+
+
 
 
 
@@ -204,4 +228,4 @@ namespace Shop.ViewModels
 
     }
 
-}
+

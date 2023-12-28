@@ -73,54 +73,35 @@ namespace Shop.Services
             _baseDeDonnees.Delete<Produit>(idProduit);
         }
 
+        public void modifierCommande(Commande c)
+        {
+            _baseDeDonnees.Update(c);
+        }
         // Opérations sur les lignes de commande
         public void AjouterLigneCommande(LigneCommande ligneCommande)
         {
             _baseDeDonnees.Insert(ligneCommande);
         }
-        public List<LigneCommande> ObtenirLignesCommande(int idCommande)
-        {
-            return _baseDeDonnees.Table<LigneCommande>().Where(l => l.Id == idCommande).ToList();
-        }
-        public List<LigneCommande> ObtenirToutesLesLignesCommande()
-        {
-            return _baseDeDonnees.Table<LigneCommande>().ToList();
-        }
 
-        public void ModifierLigneCommande(LigneCommande ligneCommande)
+        public List<LigneCommande> ObtenirLesLignesCommande(int id)
         {
-            _baseDeDonnees.Update(ligneCommande);
+            var lignes = _baseDeDonnees.Table<LigneCommande>().Where(p => p.IdCommande == id).ToList();
+            return lignes;
         }
+       
 
-        public void SupprimerLigneCommande(int idLigneCommande)
-        {
-            _baseDeDonnees.Delete<LigneCommande>(idLigneCommande);
-        }
 
-        // Opérations sur les commandes
-        public void ModifierCommande(Commande commande)
-        {
-            _baseDeDonnees.Update(commande);
-        }
-
-        public void SupprimerCommande(int idCommande)
-        {
-            // Supprimer d'abord les lignes de commande associées
-            var lignesCommande = ObtenirLignesCommande(idCommande);
-            foreach (var ligneCommande in lignesCommande)
-            {
-                _baseDeDonnees.Delete<LigneCommande>(ligneCommande.Id);
-            }
-
-            // Ensuite, supprimer la commande elle-même
-            _baseDeDonnees.Delete<Commande>(idCommande);
-        }
 
         public List<Commande> ObtenirToutesLesCommandes()
         {
             return _baseDeDonnees.Table<Commande>().ToList();
         }
 
+        // Add this method to your BoutiqueDataBase class
+        public Commande ObtenirCommandeParId(int idCommande)
+        {
+            return _baseDeDonnees.Find<Commande>(idCommande);
+        }
 
 
         // Opérations sur les commandes

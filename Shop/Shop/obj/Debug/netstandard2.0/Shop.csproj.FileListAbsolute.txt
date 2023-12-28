@@ -7,12 +7,14 @@ C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\AdminCategoriesPage.xaml.g.cs
+C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\AdminCommandsPage.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\AdminPage.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\CategoriesProduct.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\EditCategory.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\EditProduct.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\ItemDetailPage.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\ItemsPage.xaml.g.cs
+C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\LigneCommandePage.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\NewItemPage.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\PanierPage.xaml.g.cs
@@ -25,4 +27,3 @@ C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\ref\Shop.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.pdb
-C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.csproj.AssemblyReference.cache

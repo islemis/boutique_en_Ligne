@@ -11,7 +11,6 @@ namespace Shop.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        [NotNull]
         public string NomClient { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]

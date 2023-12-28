@@ -16,7 +16,7 @@ namespace Shop.ViewModels
         {
             NavigateToProductsCommand = new Command(OnNavigateToProducts);
             NavigateToCategoriesCommand = new Command(OnNavigateToCategories);
-            // NavigateToCommandsCommand = new Command(OnNavigateToCommands);
+             NavigateToCommandsCommand = new Command(OnNavigateToCommands);
         }
 
         private async void OnNavigateToProducts()
@@ -28,10 +28,10 @@ namespace Shop.ViewModels
         {
             await Shell.Current.Navigation.PushAsync(new AdminCategoriesPage());
         }
-        /*
+        
         private async void OnNavigateToCommands()
         {
-          //await Shell.Current.Navigation.PushAsync(new AdminCommandsPage());
-        }*/
+          await Shell.Current.Navigation.PushAsync(new AdminCommandsPage());
+        }
     }
 }

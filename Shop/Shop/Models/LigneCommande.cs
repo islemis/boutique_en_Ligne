@@ -15,5 +15,8 @@ namespace Shop.Models
         public int IdProduit { get; set; }
 
         public int Quantite { get; set; }
+        [ForeignKey(typeof(Commande))]
+        public int IdCommande { get; set; }
+
     }
 }

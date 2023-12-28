@@ -60,9 +60,12 @@ C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\mipmap-xxxhdp
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\xamarin_logo.png
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\icon_about.png
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\icon_feed.png
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\shoplogo.png
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\shopping.png
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\uploadflags.txt
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\resolvedassemblies.hash
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Acr.UserDialogs.dll
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Acr.UserDialogs.dll.mdb
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\AndHUD.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\FormsViewGroup.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\FormsViewGroup.pdb
@@ -278,9 +281,9 @@ C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Xa
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Xamarin.Google.Android.Material.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Xamarin.Google.Android.Material.pdb
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Xamarin.Google.Guava.ListenableFuture.dll
-C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\jl\db54999d-fcfc-40a1-abca-5960052d773f.jar
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\jl\6d0110f6-158c-4623-922f-ddb803ffc30e.jar
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_AndroidXJetifyJavaLibraryRules.stamp
-C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\proguard\885bbf56-8f72-46ed-b004-813f1740a886.cfg
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\proguard\c920c858-be16-4eaa-9130-c7edbce62da1.cfg
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_AndroidXJetifyProguardRules.stamp
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\_AndroidXJetifyProguardRules.jetify
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_AndroidXCecilfy.stamp
@@ -671,4 +674,3 @@ C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_CopyInterm
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_GenerateJavaStubs.stamp
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
-C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Acr.UserDialogs.pdb
