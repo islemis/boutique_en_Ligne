@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,9 @@ namespace Shop.Models
 
         [NotNull]
         public string Nom { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Produit> produits { get; set; }
+
 
     }
 }

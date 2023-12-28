@@ -14,8 +14,9 @@ namespace Shop.ViewModels
     {
         private ObservableCollection<Categorie> _categories;
         private Categorie _selectedItem;
-
-        public Categorie SelectedItem
+        public List<string> Icons;
+       
+    public Categorie SelectedItem
         {
             get { return _selectedItem; }
             set { SetProperty(ref _selectedItem, value); }
@@ -32,6 +33,13 @@ namespace Shop.ViewModels
         public Command ShowProductsCommand { get; }
         public AdminCategoriesPageViewModel()
         {
+            Icons = new List<string>
+        {
+            "clothes.png",
+            "shoes.jpeg",
+           "acc.jpeg" ,
+        };
+            OnAppearring();
             DeleteCategoryCommand = new Command<Categorie>(OnDeleteCategory);
             AddCategoryCommand = new Command(OnAddCategory);
             EditCategoryCommand = new Command<Categorie>(OnEditCategory);
@@ -79,8 +87,9 @@ namespace Shop.ViewModels
                 await Application.Current.MainPage.Navigation.PushAsync(new Products(selectedCategory));
             }
         }
-
-        private async void OnAddCategory()
+       
+      
+    private async void OnAddCategory()
         {
 
             await Application.Current.MainPage.Navigation.PushAsync(new EditCategory(null));

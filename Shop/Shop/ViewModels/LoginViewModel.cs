@@ -58,7 +58,7 @@ namespace Shop.ViewModels
             else
             {
                 // Display an error message
-                Application.Current.MainPage.DisplayAlert("Erreur", "Nom d'utilisateur ou mot de passe incorrect.", "OK");
+                Application.Current.MainPage.DisplayAlert("Error", "incorrect username or password.", "OK");
             }
         }
 

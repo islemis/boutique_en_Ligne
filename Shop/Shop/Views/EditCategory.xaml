@@ -7,9 +7,17 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Entry Text="{Binding Category.Nom}" Placeholder="Category Name" />
-            <Button Text="Save" Command="{Binding SaveCommand}" />
+        <StackLayout Padding="20" Spacing="15">
+            <!-- Category Name Entry -->
+            <Entry Text="{Binding Category.Nom}" Placeholder="Category Name" FontSize="16" />
+
+            <!-- Save Button -->
+<Button Text="Save" Command="{Binding SaveCommand}" 
+        TextColor="White"
+        FontSize="18" CornerRadius="8" HeightRequest="50" WidthRequest="120" />
+
+            <!-- You can add more elements as needed -->
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

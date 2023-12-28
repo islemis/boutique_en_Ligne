@@ -54,7 +54,6 @@ namespace Shop.ViewModels
         {
 
             _panier = App.shoppingCart;  // Ensure that App.shoppingCart is initialized
-            Console.WriteLine($"PanierViewModel created. Panier count: {_panier.Articles.Count}");
 
             _articlesPanier = new ObservableCollection<ArticlePanier>(_panier?.Articles ?? new List<ArticlePanier>());
             CalculerTotal();
@@ -88,6 +87,7 @@ namespace Shop.ViewModels
             Articles = new ObservableCollection<ArticlePanier>();
 
         }
+
         private void IncrementQuantity(int idProduit)
         {
             Panier.IncrementQuantity(idProduit);

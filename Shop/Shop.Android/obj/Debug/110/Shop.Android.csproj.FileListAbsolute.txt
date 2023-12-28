@@ -62,10 +62,16 @@ C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\icon
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\icon_feed.png
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\shoplogo.png
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\shopping.png
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\cart.png
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\cat.png
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\admin.jpeg
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\home.png
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\acc.jpeg
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\clothes.png
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\shoes.jpeg
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\uploadflags.txt
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\resolvedassemblies.hash
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Acr.UserDialogs.dll
-C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Acr.UserDialogs.dll.mdb
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\AndHUD.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\FormsViewGroup.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\FormsViewGroup.pdb
@@ -281,9 +287,9 @@ C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Xa
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Xamarin.Google.Android.Material.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Xamarin.Google.Android.Material.pdb
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Xamarin.Google.Guava.ListenableFuture.dll
-C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\jl\6d0110f6-158c-4623-922f-ddb803ffc30e.jar
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\jl\22430e2f-2cf2-428a-ab23-c7a8a569d888.jar
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_AndroidXJetifyJavaLibraryRules.stamp
-C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\proguard\c920c858-be16-4eaa-9130-c7edbce62da1.cfg
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\proguard\855fe2fe-7795-480f-85fd-927ef8b72019.cfg
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_AndroidXJetifyProguardRules.stamp
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\androidx\_AndroidXJetifyProguardRules.jetify
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_AndroidXCecilfy.stamp
@@ -674,3 +680,6 @@ C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_CopyInterm
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_GenerateJavaStubs.stamp
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\android\assets\Acr.UserDialogs.pdb
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\edit.png
+C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\res\drawable\delete.jpeg

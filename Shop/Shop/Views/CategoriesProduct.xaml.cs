@@ -22,11 +22,7 @@ namespace Shop.Views
             BindingContext = _viewModel = new AdminCategoriesPageViewModel();
 
         }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            _viewModel.OnAppearring();
-        }
+       
 
        
     }
