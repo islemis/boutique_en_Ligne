@@ -25,8 +25,6 @@ com.google.android.material.tabs.TabLayout;C:\Users\xps\source\repos\Shop\Shop\S
 com.google.android.material.tabs.TabLayout;C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\lp\52\jl\res\layout\tabbar.xml
 corners;C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\lp\1\jl\res\drawable\roundedbg.xml
 corners;C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\lp\1\jl\res\drawable\roundedbgdark.xml
-crc643f46942d9dd1fff9.ShellFlyoutLayout;C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\lp\52\jl\res\layout\flyoutcontent.xml
-crc64720bb2db43a66fe9.FormsViewPager;C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\lp\52\jl\res\layout\rootlayout.xml
 declare-styleable;C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\lp\1\jl\res\values\attrs.xml
 declare-styleable;C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\lp\52\jl\res\values\attrs.xml
 external-cache-path;C:\Users\xps\source\repos\Shop\Shop\Shop.Android\obj\Debug\110\lp\51\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml

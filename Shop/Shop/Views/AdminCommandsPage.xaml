@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:Shop.ViewModels"
-             x:Class="Shop.Views.AdminCommandsPage">
+             x:Class="Shop.Views.AdminCommandsPage"
+             Title="Commands">
 
     <ContentPage.BindingContext>
         <viewmodels:AdminCommandsViewModel />
@@ -20,9 +21,16 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="10">
                                 <!-- Display command details -->
-                                <Label Text="{Binding NomClient}" VerticalOptions="Center"/>
                                 <Label Text="{Binding Id}" VerticalOptions="Center"/>
-                                <Button Text="Show Details" Command="{Binding BindingContext.ShowCommandDetails, Source={x:Reference commandsListView}}" CommandParameter="{Binding .}" />
+
+                                <Label Text="{Binding NomClient}" VerticalOptions="Center"/>
+                                <StackLayout HorizontalOptions="EndAndExpand">
+                                    <Label Text="Show Details" TextColor="Black">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.ShowCommandDetails, Source={x:Reference commandsListView}}" CommandParameter="{Binding .}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

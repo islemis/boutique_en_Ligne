@@ -8,26 +8,36 @@
              x:Class="Shop.Views.EditProduct">
 
     <ContentPage.Content>
-        <StackLayout Padding="20">
-            <Entry x:Name="productNameEntry" Placeholder="Product Name" Text="{Binding Product.Nom}" />
-            <Entry x:Name="productDescriptionEntry" Placeholder="Product Description" Text="{Binding Product.Description}" />
-            <Entry x:Name="productPriceEntry" Placeholder="Product Price" Keyboard="Numeric" Text="{Binding Product.Prix, StringFormat='{0:F2}'}" />
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Entry x:Name="productNameEntry" Grid.Row="0" Placeholder="Product Name" Text="{Binding Product.Nom}" />
+            <Entry x:Name="productDescriptionEntry" Grid.Row="1" Placeholder="Product Description" Text="{Binding Product.Description}" />
+            <Entry x:Name="productPriceEntry" Grid.Row="2" Placeholder="Product Price" Keyboard="Numeric" Text="{Binding Product.Prix, StringFormat='{0:F2}'}" />
 
             <!-- Picker for selecting a category -->
-            <Picker x:Name="categoryPicker" Title="Select Category"
+            <Picker x:Name="categoryPicker" Grid.Row="3" Title="Select Category"
                     ItemsSource="{Binding Categories}"
                     ItemDisplayBinding="{Binding Nom}"
                     SelectedItem="{Binding SelectedCategory}">
             </Picker>
+            <Button x:Name="selectImageButton" Grid.Row="5" Text="Select Image" Clicked="OnSelectImageClicked" />
 
             <!-- Image control for selected product image -->
-            <Image x:Name="productImage" Source="{Binding Product.UrlImage}" />
 
             <!-- Button to select image -->
-            <Button Text="Select Image" Clicked="OnSelectImageClicked" />
+            <Image x:Name="productImage" Grid.Row="4" Source="{Binding Product.UrlImage}" />
 
             <!-- Button to update product -->
-            <Button Text="Save" Command="{Binding UpdateCommand}" />
-        </StackLayout>
+            <Button x:Name="saveButton" Grid.Row="6" Text="Save" Command="{Binding UpdateCommand}" HorizontalOptions="End" WidthRequest="100" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
