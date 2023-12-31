@@ -29,5 +29,21 @@ namespace Shop.Views
             base.OnAppearing();
             _viewModel.OnAppearing();
         }
+
+
+
+
+        private void OnProductSelected(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.FirstOrDefault() is Produit selectedProduct)
+            {
+                // Call the ProductSelected method in the ViewModel
+                ((UserProductsPage)BindingContext).OnProductSelected(selectedProduct);
+
+                // Clear the selection to allow selecting the same item again
+                ((CollectionView)sender).SelectedItem = null;
+            }
+        }
+
     }
 }

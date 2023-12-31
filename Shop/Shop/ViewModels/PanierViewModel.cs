@@ -12,7 +12,14 @@ namespace Shop.ViewModels
     public class PanierViewModel : BaseViewModel
     {
         private ObservableCollection<ArticlePanier> _articlesPanier;
-        private ArticlePanier  _selectedItem;
+        private ArticlePanier _selectedItem;
+        public decimal _total;
+
+        public decimal Total
+        {
+            get { return _total; }
+            set { SetProperty(ref _total, value); }
+        }
         public ArticlePanier SelectedItem
         {
             get { return _selectedItem; }
@@ -20,7 +27,9 @@ namespace Shop.ViewModels
         }
         public ObservableCollection<ArticlePanier> Articles
         {
-            get { return _articlesPanier; 
+            get
+            {
+                return _articlesPanier;
             }
             set
             {
@@ -36,16 +45,8 @@ namespace Shop.ViewModels
         public Panier Panier
         {
             get { return _panier; }
-            set { SetProperty(ref _panier, value); }
-        }
-        public decimal _total;
 
-        public decimal Total
-        {
-            get { return _total; }
-            set { SetProperty(ref _total, value); }
         }
-
         public ICommand RetirerArticleCommand { get; }
         public ICommand PasserCommandeCommand { get; }
         public ICommand ViderPanierCommand { get; }
@@ -54,6 +55,7 @@ namespace Shop.ViewModels
         {
 
             _panier = App.shoppingCart;  // Ensure that App.shoppingCart is initialized
+            Console.WriteLine($"PanierViewModel created. Panier count: {_panier.Articles.Count}");
 
             _articlesPanier = new ObservableCollection<ArticlePanier>(_panier?.Articles ?? new List<ArticlePanier>());
             CalculerTotal();
@@ -67,7 +69,7 @@ namespace Shop.ViewModels
         }
 
 
-      
+
         // Commandes liées aux méthodes du Panier
         public ICommand IncrementQuantityCommand { get; }
         public ICommand DecrementQuantityCommand { get; }
@@ -77,6 +79,30 @@ namespace Shop.ViewModels
             App.shoppingCart.RetirerArticle(idProduit);
             RefreshPanier();
         }
+        private async void PasserCommande()
+        {
+            // Prompt the user for their name
+            string customerName = await Application.Current.MainPage.DisplayPromptAsync("Confirmation", "Please write your name:");
+
+            if (!string.IsNullOrEmpty(customerName))
+            {
+                // User entered a name, proceed with adding the command
+                Console.WriteLine($"Commande confirmed by {customerName}");
+                AjouterCommande(customerName);
+                ViderPanier();  // This line should clear the panier
+            }
+            else
+            {
+                // User canceled or entered an empty name
+                Console.WriteLine("Commande canceled");
+            }
+        }
+
+
+
+
+
+
 
 
 
@@ -87,16 +113,21 @@ namespace Shop.ViewModels
             Articles = new ObservableCollection<ArticlePanier>();
 
         }
-
+        // Actualise la liste d'articles après chaque modification
+        private void RefreshPanier()
+        {
+            Articles = new ObservableCollection<ArticlePanier>(_panier.Articles);
+            OnPropertyChanged(nameof(Articles));
+        }
         private void IncrementQuantity(int idProduit)
         {
-            Panier.IncrementQuantity(idProduit);
+            _panier.IncrementQuantity(idProduit);
             RefreshPanier();
         }
 
         private void DecrementQuantity(int idProduit)
         {
-            Panier.DecrementQuantity(idProduit);
+            _panier.DecrementQuantity(idProduit);
             RefreshPanier();
         }
 
@@ -108,89 +139,78 @@ namespace Shop.ViewModels
 
             OnPropertyChanged(nameof(Total));
         }
-
-        // Actualise la liste d'articles après chaque modification
-        private void RefreshPanier()
-        {
-            Articles = new ObservableCollection<ArticlePanier>(_panier.Articles);
-            OnPropertyChanged(nameof(Articles));
-        }
-
-        private async void PasserCommande()
-        {
-            // Prompt the user for their name
-            string customerName = await Application.Current.MainPage.DisplayPromptAsync("Confirmation", "Please write your name:");
-
-            if (!string.IsNullOrEmpty(customerName))
-            {
-                // User entered a name, proceed with adding the command
-                Console.WriteLine($"Commande confirmed by {customerName}");
-                AjouterCommande(customerName);
-            }
-            else
-            {
-                // User canceled or entered an empty name
-                Console.WriteLine("Commande canceled");
-            }
-        }
         private void AjouterCommande(String name)
-{
-    
-        if (name != null)
         {
-            // Créer une nouvelle commande à partir des articles dans le panier
-            Commande nouvelleCommande = new Commande();
+
+            if (name != null)
+            {
+                // Créer une nouvelle commande à partir des articles dans le panier
+                Commande nouvelleCommande = new Commande();
                 nouvelleCommande.NomClient = name;
 
                 // Ajouter la commande à la base de données pour obtenir l'Id auto-incrémenté
                 App.mydataBase.AjouterCommande(nouvelleCommande);
 
-            // Créer une liste pour les lignes de commande
-            List<LigneCommande> lignesCommande = new List<LigneCommande>();
+                // Créer une liste pour les lignes de commande
+                List<LigneCommande> lignesCommande = new List<LigneCommande>();
 
-            // Obtenez l'Id de la commande fraîchement ajoutée
-            int commandeId = nouvelleCommande.Id;
+                // Obtenez l'Id de la commande fraîchement ajoutée
+                int commandeId = nouvelleCommande.Id;
 
-            // Ajouter les lignes de commande associées à la commande
-            foreach (var article in Panier.Articles)
-            {
-                LigneCommande nouvelleLigneCommande = new LigneCommande
+                // Ajouter les lignes de commande associées à la commande
+                foreach (var article in Panier.Articles)
                 {
-                    IdProduit = article.IdProduit,
-                    Quantite = article.Quantite,
-                    IdCommande = commandeId
-                };
+                    LigneCommande nouvelleLigneCommande = new LigneCommande
+                    {
+                        IdProduit = article.IdProduit,
+                        Quantite = article.Quantite,
+                        IdCommande = commandeId
+                    };
 
-                // Ajoutez la ligne de commande à la liste
-                lignesCommande.Add(nouvelleLigneCommande);
+                    // Ajoutez la ligne de commande à la liste
+                    lignesCommande.Add(nouvelleLigneCommande);
 
-                try
-                {
-                    // Sauvegardez la ligneCommande dans la base de données
-                    App.mydataBase.AjouterLigneCommande(nouvelleLigneCommande);
-                    Console.WriteLine(App.mydataBase.ObtenirLesLignesCommande(commandeId));
+                    try
+                    {
+                        // Sauvegardez la ligneCommande dans la base de données
+                        App.mydataBase.AjouterLigneCommande(nouvelleLigneCommande);
+                        Console.WriteLine(App.mydataBase.ObtenirLesLignesCommande(commandeId));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error: {ex.Message}");
+                    }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error: {ex.Message}");
-                }
+
+                // Assigner la liste de lignes de commande à la nouvelle commande
+                nouvelleCommande.LignesCommande = lignesCommande;
+
+                // Mettez à jour la commande dans la base de données
+                App.mydataBase.modifierCommande(nouvelleCommande);
+
+                Console.WriteLine($"Commande added for {name}");
+                Console.WriteLine($"Loaded ligne {nouvelleCommande.LignesCommande[0].Quantite}");
+                ViderPanier();  // This line should clear the panier
+
             }
-
-            // Assigner la liste de lignes de commande à la nouvelle commande
-            nouvelleCommande.LignesCommande = lignesCommande;
-
-            // Mettez à jour la commande dans la base de données
-            App.mydataBase.modifierCommande(nouvelleCommande);
-
-            Console.WriteLine($"Commande added for {name}");
-            Console.WriteLine($"Loaded ligne {nouvelleCommande.LignesCommande[0].Quantite}");
-                    ViderPanier();  // This line should clear the panier
-
-                }
-                else
-        {
-            Console.WriteLine("Error: Customer name is null.");
+            else
+            {
+                Console.WriteLine("Error: Customer name is null.");
+            }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 
@@ -204,28 +224,14 @@ namespace Shop.ViewModels
 
 
 
-   
+
+
+
+
+
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
 
 

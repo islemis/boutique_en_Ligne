@@ -1,7 +1,3 @@
-C:\Users\xps\source\repos\Shop\Shop\Shop\bin\Debug\netstandard2.0\Shop.deps.json
-C:\Users\xps\source\repos\Shop\Shop\Shop\bin\Debug\netstandard2.0\Shop.dll
-C:\Users\xps\source\repos\Shop\Shop\Shop\bin\Debug\netstandard2.0\ref\Shop.dll
-C:\Users\xps\source\repos\Shop\Shop\Shop\bin\Debug\netstandard2.0\Shop.pdb
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
@@ -18,12 +14,18 @@ C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\LigneCom
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\NewItemPage.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\PanierPage.xaml.g.cs
+C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\ProductDetailsPage.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\Products.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Views\ProductsPageAdmin.xaml.g.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.AssemblyInfoInputs.cache
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.AssemblyInfo.cs
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.csproj.CoreCompileInputs.cache
-C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\ref\Shop.dll
 C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.pdb
+C:\Users\xps\source\repos\Shop\Shop\Shop\bin\Debug\netstandard2.0\Shop.deps.json
+C:\Users\xps\source\repos\Shop\Shop\Shop\bin\Debug\netstandard2.0\Shop.dll
+C:\Users\xps\source\repos\Shop\Shop\Shop\bin\Debug\netstandard2.0\ref\Shop.dll
+C:\Users\xps\source\repos\Shop\Shop\Shop\bin\Debug\netstandard2.0\Shop.pdb
+C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\xps\source\repos\Shop\Shop\Shop\obj\Debug\netstandard2.0\Shop.csproj.AssemblyReference.cache

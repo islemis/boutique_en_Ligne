@@ -1,5 +1,6 @@
 ﻿using Shop.Models;
 using SQLite;
+using SQLiteNetExtensions.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,13 +45,29 @@ namespace Shop.Services
 
         public void ModifierCategorie(Categorie categorie)
         {
+            // Mettre à jour la catégorie
             _baseDeDonnees.Update(categorie);
+
+            
         }
+
 
         public void SupprimerCategorie(int idCategorie)
         {
-            _baseDeDonnees.Delete<Categorie>(idCategorie);
+            // Récupérer la catégorie
+            var categorie = _baseDeDonnees.GetWithChildren<Categorie>(idCategorie, recursive: true);
+
+            // Supprimer les produits associés
+            foreach (var produit in categorie.produits)
+            {
+                _baseDeDonnees.Delete(produit);
+            }
+
+            // Supprimer la catégorie elle-même
+            _baseDeDonnees.Delete(categorie);
         }
+
+
 
         // Opérations sur les produits
         public List<Produit> ObtenirProduits()
@@ -65,7 +82,16 @@ namespace Shop.Services
 
         public void ModifierProduit(Produit produit)
         {
+            // Mettre à jour le produit
             _baseDeDonnees.Update(produit);
+
+            // Mettre à jour la référence de catégorie dans le produit
+            var categorie = _baseDeDonnees.Find<Categorie>(produit.IdCategorie);
+            if (categorie != null)
+            {
+                produit.IdCategorie = categorie.Id;
+                _baseDeDonnees.Update(produit);
+            }
         }
 
         public void SupprimerProduit(int idProduit)
