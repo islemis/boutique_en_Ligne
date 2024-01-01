@@ -15,7 +15,6 @@ namespace Shop.ViewModels
         private ObservableCollection<Categorie> _categories;
         private Categorie _selectedItem;
         public List<string> Icons;
-       
     public Categorie SelectedItem
         {
             get { return _selectedItem; }
@@ -60,13 +59,30 @@ namespace Shop.ViewModels
         {
             LoadCategories();
         }
-       
+
+        public string GetIconPathForCategory(string categoryName)
+        {
+            // Logic to generate the icon path based on the category name
+            // For example, you can use a switch statement or a dictionary to map category names to icon paths
+            switch (categoryName)
+            {
+                case "Clothes":
+                    return "clothes.png";
+                case "Shoes":
+                    return "shoes.jpeg";
+                case "Accessories":
+                    return "acc.jpeg";
+                // Add more cases as needed
+                default:
+                    return "default_icon.png"; // Provide a default icon path
+            }
+        }
 
         private async void OnDeleteCategory(Categorie selectedCategory)
         {
             if (selectedCategory != null)
             {
-                bool result = await Application.Current.MainPage.DisplayAlert("Supprimer la catégorie", $"Êtes-vous sûr de vouloir supprimer la catégorie {selectedCategory.Nom} ?", "Oui", "Non");
+                bool result = await Application.Current.MainPage.DisplayAlert("Delete category", $"Are you sure you want to delete the category {selectedCategory.Nom} ?", "Yes", "No");
 
                 if (result)
                 {

@@ -11,7 +11,13 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <!-- Updated ListView ItemTemplate with a Button -->
+            <!-- Header Labels -->
+            <StackLayout Orientation="Horizontal" Padding="10">
+                <Label Text="IdCommande" />
+                <Label Text="NomClient" Margin="20,0" VerticalOptions="Center"/>
+            </StackLayout>
+
+            <!-- ListView with ItemTemplate and Button -->
             <ListView x:Name="commandsListView" ItemsSource="{Binding Commands}">
                 <ListView.BindingContext>
                     <viewmodels:AdminCommandsViewModel />
@@ -21,9 +27,8 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="10">
                                 <!-- Display command details -->
-                                <Label Text="{Binding Id}" VerticalOptions="Center"/>
-
-                                <Label Text="{Binding NomClient}" VerticalOptions="Center"/>
+                                <Label Text="{Binding Id}" />
+                                <Label Text="{Binding NomClient}" VerticalOptions="Center"  Margin="100,0"/>
                                 <StackLayout HorizontalOptions="EndAndExpand">
                                     <Label Text="Show Details" TextColor="Black">
                                         <Label.GestureRecognizers>

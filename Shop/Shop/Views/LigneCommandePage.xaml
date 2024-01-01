@@ -12,8 +12,8 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal" Padding="10">
-                <Label Text="IdProduit" VerticalOptions="Center"/>
-                <Label Text="Quantité" VerticalOptions="Center"/>
+                <Label Text="IdProduit" Margin="0,10,0,0"/>
+                <Label Text="Quantité" Margin="50,10,0,0"/>
                 <!-- Add more labels for additional details if needed -->
             </StackLayout>
             <!-- Display LigneCommande details -->
@@ -25,7 +25,7 @@
                                 <!-- Display LigneCommande details (customize as needed) -->
                                 
                                 <Label Text="{Binding IdProduit}" VerticalOptions="Center"/>
-                                <Label Text="{Binding Quantite}" VerticalOptions="Center"/>
+                                <Label Text="{Binding Quantite}" Margin="110,0"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

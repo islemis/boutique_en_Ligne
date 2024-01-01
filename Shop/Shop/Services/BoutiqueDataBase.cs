@@ -135,6 +135,25 @@ namespace Shop.Services
         {
             _baseDeDonnees.Insert(commande);
         }
+        public void SupprimerToutesLesCommandes()
+        {
+            // Récupérer toutes les commandes
+            var commandes = _baseDeDonnees.Table<Commande>().ToList();
+
+            foreach (var commande in commandes)
+            {
+                // Supprimer les lignes de commande associées
+                var lignesCommande = _baseDeDonnees.Table<LigneCommande>().Where(l => l.IdCommande == commande.Id).ToList();
+                foreach (var ligneCommande in lignesCommande)
+                {
+                    _baseDeDonnees.Delete(ligneCommande);
+                }
+
+                // Supprimer la commande elle-même
+                _baseDeDonnees.Delete(commande);
+            }
+        }
+
 
 
 

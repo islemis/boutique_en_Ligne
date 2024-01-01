@@ -57,20 +57,16 @@ namespace Shop.ViewModels
         {
             if (selectedProduct != null)
             {
-                bool result = await Application.Current.MainPage.DisplayAlert("Supprimer le produit", $"Êtes-vous sûr de vouloir supprimer le produit {selectedProduct.Nom} ?", "Oui", "Non");
+                bool result = await Application.Current.MainPage.DisplayAlert("Delete Product", $"Are you sure you want to delete the product {selectedProduct.Nom} ?", "Yes", "No");
 
                 if (result)
                 {
                     App.mydataBase.SupprimerProduit(selectedProduct.Id);
                     LoadProducts();
 
-                    await Application.Current.MainPage.DisplayAlert("Produit supprimé", "Le produit a été supprimé avec succès.", "OK");
                 }
             }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Sélectionnez un produit", "Veuillez sélectionner un produit avant de supprimer.", "OK");
-            }
+         
         }
 
         private async void OnAddProduct()

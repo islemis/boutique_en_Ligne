@@ -35,6 +35,8 @@ namespace Shop.ViewModels
 
         public AdminCommandsViewModel()
         {
+            //App.mydataBase.SupprimerToutesLesCommandes();
+
             _commands = new ObservableCollection<Commande>(App.mydataBase.ObtenirToutesLesCommandes());
             ShowCommandDetails = new Command<Commande>(ExecuteShowCommandDetails);
         }

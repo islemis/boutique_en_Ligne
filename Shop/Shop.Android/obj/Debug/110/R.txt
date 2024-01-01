@@ -1411,7 +1411,7 @@ int drawable material_ic_keyboard_arrow_left_black_24dp 0x7f070080
 int drawable material_ic_keyboard_arrow_right_black_24dp 0x7f070081
 int drawable material_ic_menu_arrow_down_black_24dp 0x7f070082
 int drawable material_ic_menu_arrow_up_black_24dp 0x7f070083
-int drawable moins 0x7f070084
+int drawable minus 0x7f070084
 int drawable mtrl_dialog_background 0x7f070085
 int drawable mtrl_dropdown_arrow 0x7f070086
 int drawable mtrl_ic_arrow_drop_down 0x7f070087

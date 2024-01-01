@@ -19,7 +19,7 @@
                             <StackLayout Orientation="Horizontal" Padding="1">
                                 <Label Text="{Binding NomProduit}" VerticalOptions="Center"/>
                                 <Label Text="{Binding PrixUnitaire, StringFormat=' {0:C}'}" VerticalOptions="Center"/>
-                                <Image Source="moins.png" WidthRequest="30" HeightRequest="30"  HorizontalOptions="EndAndExpand">
+                                <Image Source="minus.png" WidthRequest="30" HeightRequest="30"   Margin="40,0,20,0" >
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Path=BindingContext.DecrementQuantityCommand, Source={x:Reference panierListView}}" CommandParameter="{Binding IdProduit}" />
                                     </Image.GestureRecognizers>
@@ -27,7 +27,7 @@
                                 <Label Text="{Binding Quantite}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
 
                                 <!-- Styling for buttons -->
-                                <Image Source="plus.png" WidthRequest="30" HeightRequest="30" >
+                                <Image Source="plus.jpeg" WidthRequest="30" HeightRequest="30" Margin="20,0,50,0" >
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Path=BindingContext.IncrementQuantityCommand, Source={x:Reference panierListView}}" CommandParameter="{Binding IdProduit}" />
                                     </Image.GestureRecognizers>

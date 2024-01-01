@@ -16,7 +16,7 @@
     <ContentPage.Content>
         <!-- Layout for displaying product details -->
         <StackLayout Padding="10">
-            <Image Source="{Binding Product.UrlImage, Converter={StaticResource ByteArrayToImageSourceConverter}}" WidthRequest="120" HeightRequest="120" />
+            <Image Source="{Binding Product.UrlImage, Converter={StaticResource ByteArrayToImageSourceConverter}}" WidthRequest="200" HeightRequest="250" />
 
             <Label Text="{Binding Product.Nom}" FontSize="20" FontAttributes="Bold"/>
             <Label Text="{Binding Product.Description}" FontSize="16"/>

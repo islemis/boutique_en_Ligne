@@ -19,10 +19,9 @@
                     <Frame CornerRadius="5" Margin="5,5,5,0" BorderColor="LightGray" BackgroundColor="White">
                         <StackLayout Orientation="Horizontal">
                             <!-- Add an Image for the category icon -->
-                            <Image Source="{Binding GetIconPathForCategory(Nom), Source={x:Reference ThisPage}}" HeightRequest="40" WidthRequest="40" Margin="10"/>
 
                             <StackLayout>
-                                <Label Text="{Binding Nom}" Margin="15" TextColor="Black"/>
+                                <Label Text="{Binding Nom}" Margin="10" TextColor="Black"/>
                                 <!-- Add other details as needed -->
                             </StackLayout>
                         </StackLayout>

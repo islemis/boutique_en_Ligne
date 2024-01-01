@@ -14,7 +14,7 @@
             <!-- Save Button -->
 <Button Text="Save" Command="{Binding SaveCommand}" 
         TextColor="White"
-        FontSize="18" CornerRadius="8" HeightRequest="50" WidthRequest="120" />
+        FontSize="18" CornerRadius="8" HeightRequest="50" WidthRequest="120" Margin="200,10,8,12"/>
 
             <!-- You can add more elements as needed -->
 

@@ -14322,7 +14322,7 @@ namespace Shop.Droid
 			public const int material_ic_menu_arrow_up_black_24dp = 2131165315;
 			
 			// aapt resource value: 0x7F070084
-			public const int moins = 2131165316;
+			public const int minus = 2131165316;
 			
 			// aapt resource value: 0x7F070085
 			public const int mtrl_dialog_background = 2131165317;

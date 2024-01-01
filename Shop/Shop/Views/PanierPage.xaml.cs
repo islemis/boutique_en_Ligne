@@ -5,10 +5,16 @@ namespace Shop.Views
 {
     public partial class PanierPage : ContentPage
     {
+      public readonly PanierViewModel _viewModel ;
         public PanierPage()
         {
             InitializeComponent();
-            BindingContext = new PanierViewModel();
+            BindingContext = _viewModel = new PanierViewModel();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing();
         }
     }
 }

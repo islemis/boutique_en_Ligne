@@ -27,38 +27,19 @@ namespace Shop.ViewModels
         }
         public ObservableCollection<ArticlePanier> Articles
         {
-            get
-            {
-                return _articlesPanier;
-            }
-            set
-            {
-                _articlesPanier = value;
-                OnPropertyChanged(nameof(Articles));
-                // Whenever the Articles collection changes, recalculate the total
-                CalculerTotal();
-            }
+            get { return _articlesPanier; }
+            set { SetProperty(ref _articlesPanier, value); }
         }
 
-        private Panier _panier;
 
-        public Panier Panier
-        {
-            get { return _panier; }
-
-        }
         public ICommand RetirerArticleCommand { get; }
         public ICommand PasserCommandeCommand { get; }
         public ICommand ViderPanierCommand { get; }
 
         public PanierViewModel()
         {
+            OnAppearing();
 
-            _panier = App.shoppingCart;  // Ensure that App.shoppingCart is initialized
-            Console.WriteLine($"PanierViewModel created. Panier count: {_panier.Articles.Count}");
-
-            _articlesPanier = new ObservableCollection<ArticlePanier>(_panier?.Articles ?? new List<ArticlePanier>());
-            CalculerTotal();
 
             RetirerArticleCommand = new Command<int>(RetirerArticle);
             PasserCommandeCommand = new Command(PasserCommande);
@@ -68,7 +49,13 @@ namespace Shop.ViewModels
             CalculerTotalCommand = new Command(CalculerTotal);
         }
 
+        public void OnAppearing()
+        {
+            Articles = new ObservableCollection<ArticlePanier>(App.shoppingCart.Articles ?? new List<ArticlePanier>());
+            Console.WriteLine($"PanierViewModel created. Panier count: {App.shoppingCart.Articles.Count}");
 
+            CalculerTotal();
+        }
 
         // Commandes liées aux méthodes du Panier
         public ICommand IncrementQuantityCommand { get; }
@@ -109,31 +96,33 @@ namespace Shop.ViewModels
 
         private void ViderPanier()
         {
-            Console.WriteLine("ViderPanier method called."); // Add debugging output
-            Articles = new ObservableCollection<ArticlePanier>();
-
+            App.shoppingCart.Articles.Clear();
+            CalculerTotal();
+            RefreshPanier();
         }
         // Actualise la liste d'articles après chaque modification
         private void RefreshPanier()
         {
-            Articles = new ObservableCollection<ArticlePanier>(_panier.Articles);
+            Articles = new ObservableCollection<ArticlePanier>(App.shoppingCart.Articles);
             OnPropertyChanged(nameof(Articles));
+            CalculerTotal();
+
         }
         private void IncrementQuantity(int idProduit)
         {
-            _panier.IncrementQuantity(idProduit);
+            App.shoppingCart.IncrementQuantity(idProduit);
             RefreshPanier();
         }
 
         private void DecrementQuantity(int idProduit)
         {
-            _panier.DecrementQuantity(idProduit);
+            App.shoppingCart.DecrementQuantity(idProduit);
             RefreshPanier();
         }
 
         private void CalculerTotal()
         {
-            Total = _panier.CalculerTotal(Articles.ToList());
+            Total = App.shoppingCart.CalculerTotal(Articles.ToList());
             Console.WriteLine($"Total du panier: {Total:C}");
             Console.WriteLine($"CalculerTotal called. Articles count: {Articles.Count}");
 
@@ -158,7 +147,7 @@ namespace Shop.ViewModels
                 int commandeId = nouvelleCommande.Id;
 
                 // Ajouter les lignes de commande associées à la commande
-                foreach (var article in Panier.Articles)
+                foreach (var article in App.shoppingCart.Articles)
                 {
                     LigneCommande nouvelleLigneCommande = new LigneCommande
                     {

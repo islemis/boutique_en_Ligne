@@ -6594,7 +6594,7 @@ public final class R {
     public static final int material_ic_keyboard_arrow_right_black_24dp=0x7f070081;
     public static final int material_ic_menu_arrow_down_black_24dp=0x7f070082;
     public static final int material_ic_menu_arrow_up_black_24dp=0x7f070083;
-    public static final int moins=0x7f070084;
+    public static final int minus=0x7f070084;
     public static final int mtrl_dialog_background=0x7f070085;
     public static final int mtrl_dropdown_arrow=0x7f070086;
     public static final int mtrl_ic_arrow_drop_down=0x7f070087;

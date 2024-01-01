@@ -29,12 +29,13 @@
                     ItemDisplayBinding="{Binding Nom}"
                     SelectedItem="{Binding SelectedCategory}">
             </Picker>
-            <Button x:Name="selectImageButton" Grid.Row="5" Text="Select Image" Clicked="OnSelectImageClicked" />
+            <ImageButton  Grid.Row="4"  Source="image.png" Clicked="OnSelectImageClicked" WidthRequest="60" BackgroundColor="White"  />
+
 
             <!-- Image control for selected product image -->
 
             <!-- Button to select image -->
-            <Image x:Name="productImage" Grid.Row="4" Source="{Binding Product.UrlImage}" />
+            <Image x:Name="productImage" Grid.Row="5" Source="{Binding Product.UrlImage}" />
 
             <!-- Button to update product -->
             <Button x:Name="saveButton" Grid.Row="6" Text="Save" Command="{Binding UpdateCommand}" HorizontalOptions="End" WidthRequest="100" />
